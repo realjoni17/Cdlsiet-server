@@ -12,12 +12,13 @@ import (
 )
 
 var db *gorm.DB
-var host = ""
-var user = ""
-var pw = ""
-var port int
-var dbname = ""
-var ssl = ""
+
+//var host = ""
+//var user = ""
+//var pw = ""
+//var port int
+//var dbname = ""
+//var ssl = ""
 
 func StartDatabase() {
 	host := os.Getenv("Host")
@@ -28,8 +29,6 @@ func StartDatabase() {
 	ssl := os.Getenv("SslMode")
 	str := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host, user, pw, dbName, port, ssl)
 	//var cred = "host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host,user,pw,dbName,port"
-
-	// "host=rain.db.elephantsql.com user=vuehykgc password=vEQ17Xobu9riDPSH85XZKpW4LoxwHGJY dbname=vuehykgc port=5432 sslmode=disable"
 
 	database, err := gorm.Open(postgres.Open(str), &gorm.Config{})
 
