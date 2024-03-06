@@ -3,7 +3,6 @@ package database
 import (
 	"fmt"
 	"log"
-	"os"
 	"time"
 
 	"github.com/realjoni17/Cdlsiet/database/migrations"
@@ -21,15 +20,15 @@ var db *gorm.DB
 //var ssl = ""
 
 func StartDatabase() {
-	host := os.Getenv("Host")
-	user := os.Getenv("User")
-	pw := os.Getenv("Password")
-	port := os.Getenv("Port")
-	dbName := os.Getenv("Db_Name")
-	ssl := os.Getenv("SslMode")
-	str := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host, user, pw, dbName, port, ssl)
+	//	host := os.Getenv("Host")
+	//	user := os.Getenv("User")
+	//	pw := os.Getenv("Password")
+	//	port := os.Getenv("Port")
+	//	dbName := os.Getenv("Db_Name")
+	//	ssl := os.Getenv("SslMode")
+	//str := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host, user, pw, dbName, port, ssl)
 	//var cred = "host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host,user,pw,dbName,port"
-
+	str := "host=rain.db.elephantsql.com user=vuehykgc password=vEQ17Xobu9riDPSH85XZKpW4LoxwHGJY dbname=vuehykgc port=5432 sslmode=disable"
 	database, err := gorm.Open(postgres.Open(str), &gorm.Config{})
 
 	if err != nil {
