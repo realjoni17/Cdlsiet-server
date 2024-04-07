@@ -12,4 +12,5 @@ func RunMigrations(db *gorm.DB) {
 	db.AutoMigrate(models.Books{})
 	db.AutoMigrate(models.Pyq{})
 	db.AutoMigrate(models.Syllabus{})
+	db.AutoMigrate(models.Post{})
 }
