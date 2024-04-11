@@ -41,7 +41,6 @@ func StartDatabase() {
 	config.SetMaxIdleConns(10)
 	config.SetMaxOpenConns(100)
 	config.SetConnMaxLifetime(time.Hour)
-
 	migrations.RunMigrations(db)
 }
 
@@ -50,12 +49,10 @@ func CloseConn() error {
 	if err != nil {
 		return err
 	}
-
 	err = config.Close()
 	if err != nil {
 		return err
 	}
-
 	return nil
 }
 
