@@ -23,7 +23,7 @@ func NewServer() Server {
 func (s *Server) Run() {
 	router := routes.ConfigRoutes(s.server)
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://google.com"}
+	config.AllowAllOrigins = true
 	router.Use(cors.New(config))
 
 	log.Printf("Server running at port: %v", s.port)
