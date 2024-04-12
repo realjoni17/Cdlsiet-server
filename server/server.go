@@ -23,7 +23,8 @@ func NewServer() Server {
 func (s *Server) Run() {
 	router := routes.ConfigRoutes(s.server)
 	config := cors.DefaultConfig()
-	config.AllowAllOrigins = true
+	//	config.AllowAllOrigins = true
+	config.AllowOrigins = []string{"http://localhost:8080"}
 	router.Use(cors.New(config))
 
 	log.Printf("Server running at port: %v", s.port)
