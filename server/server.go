@@ -21,7 +21,7 @@ func NewServer() Server {
 }
 
 func (s *Server) Run() {
-	router := routes.ConfigRoutes(s.server)
+	route := s.server
 
 	config := cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000"},
@@ -32,7 +32,9 @@ func (s *Server) Run() {
 		AllowWildcard:    true,
 	}
 
-	router.Use(cors.New(config))
+	route.Use(cors.New(config))
+
+	router := routes.ConfigRoutes(route)
 
 	log.Printf("Server running at port: %v", s.port)
 	log.Fatal(router.Run("0.0.0.0:" + s.port))
