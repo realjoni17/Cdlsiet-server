@@ -22,10 +22,16 @@ func NewServer() Server {
 
 func (s *Server) Run() {
 	router := routes.ConfigRoutes(s.server)
-	config := cors.DefaultConfig()
-	//	config.AllowAllOrigins = true
-	config.AddAllowHeaders("Access-Control-Allow-Origin")
-	//config.AllowOrigins = []string{"http://localhost:8080"}
+
+	config := cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		AllowWildcard:    true,
+	}
+
 	router.Use(cors.New(config))
 
 	log.Printf("Server running at port: %v", s.port)
